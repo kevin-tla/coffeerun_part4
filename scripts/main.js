@@ -18,7 +18,7 @@ function hideDetails() {
     //var SERVER_URL = 'http://coffeerun-v2-rest-api.herokuapp.com/api/coffeeorders';
 
     //For JSON server
-    var SERVER_URL = 'http://localhost:3002/';
+    var SERVER_URL = 'http://localhost:3002/coffeeorders/';
     var App = window.App;
     var Truck = App.Truck;
     var DataStore = App.DataStore;

@@ -14,7 +14,7 @@
 
     RemoteDataStore.prototype.add = function(key, val) {
         //POST commands from HTML, it now knows who to talk to, what to say, and what to do w/the info
-        return $.post(this.serverUrl + 'posts/', val, function(serverResponse) {
+        return $.post(this.serverUrl, val, function(serverResponse) {
             console.log(serverResponse);
         });
     };
@@ -35,7 +35,7 @@
     */
 
     RemoteDataStore.prototype.getAll = function(cb) {
-        return $.get(this.serverUrl + 'posts', function(serverResponse) {
+        return $.get(this.serverUrl , function(serverResponse) {
             console.log(serverResponse);
             if (cb) {
                 cb(serverResponse);
@@ -63,7 +63,7 @@
 
     //get info from server
     RemoteDataStore.prototype.get = function(key, cb) {
-        return $.get(this.serverUrl + key, function(serverResponse) {
+        return $.get(this.serverUrl  + key, function(serverResponse) {
             console.log(serverResponse);
             if (cb) {
                 cb(serverResponse);
@@ -76,8 +76,8 @@
     //"type: 'DELETE'" is the important part of this function
     RemoteDataStore.prototype.remove = function(key) {
 
-      console.log(this.serverUrl + 'posts/' + key);
-        return $.ajax(this.serverUrl + 'posts/' + key, {
+      console.log(this.serverUrl + key);
+        return $.ajax(this.serverUrl  + key, {
             type: 'DELETE'
         });
     };
