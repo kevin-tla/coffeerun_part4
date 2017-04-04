@@ -54,8 +54,7 @@
             type: 'checkbox',
             //for Assignment 8 for db.json
             value: coffeeOrder.id
-            
-          //  value: coffeeOrder.emailAddress
+            //  value: coffeeOrder.emailAddress
         });
 
         var description = coffeeOrder.size + ' ';

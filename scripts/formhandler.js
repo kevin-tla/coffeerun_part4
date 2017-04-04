@@ -153,27 +153,36 @@
     'setCustomValidity' is where you put in the changed message you want to output
     */
 
-    FormHandler.prototype.addInputHandler = function(fn, fn1) {
+    FormHandler.prototype.addInputHandler = function(fn) {
         console.log('Setting input handler for form');
         this.$formElement.on('input', '[name="emailAddress"]', function(event) {
             var emailAddress = event.target.value;
             var message = '';
             if (fn(emailAddress)) {
-                //if (fn1(true/*emailAddress*/)) {
-                    event.target.setCustomValidity(message);
-            /*    } else {
-                    message = emailAddress + ' is already registered!';
-                    event.target.setCustomValidity(message);
-                }
+                event.target.setCustomValidity('');
+                var SERVER_URL = 'http://localhost:3002/coffeeorders';
+                $.get(SERVER_URL, function(serverResponse) {
+                    var emailList = [];
+                    for (var i in serverResponse) {
+                        emailList.push(serverResponse[i].emailAddress);
+                    }
+
+                    if (emailList.indexOf(emailAddress) != -1) {
+                        message = emailAddress + ' is already in use.';
+                        event.target.setCustomValidity(message);
+                    } else {
+                        event.target.setCustomValidity('');
+                    }
+                });
             } else {
 
                 message = emailAddress + ' is not an authorized email address!';
                 event.target.setCustomValidity(message);
-            */}
+            }
         });
     };
 
-    //For Silver Challenge Assignment 7
+
     FormHandler.prototype.addInputHandlerSilverChallenge = function(fn1, fn2) {
         console.log('Listener to validate slider + coffee is up');
 

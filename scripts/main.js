@@ -57,7 +57,7 @@ function hideDetails() {
             );
     });
 
-    formHandler.addInputHandler(Validation.isCompanyEmail, Validation.isAvailable);
+    formHandler.addInputHandler(Validation.isCompanyEmail);
     formHandler.addInputHandlerSilverChallenge(Validation.isDecaf, Validation.isStrength);
 
     myTruck.printOrders(checkList.addRow.bind(checkList));
