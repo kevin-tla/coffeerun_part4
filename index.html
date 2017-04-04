@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>coffeerun</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--  For gOld Challenge: Assignment 6
+    <link rel="stylesheet" href="stylesheets/styles.css"> -->
+
+    <!-- This style says that any form with
+    pseudo classes "invalid", "required", or "focus" in it will get a border color-->
+    <style>
+        form :focus:required:invalid {
+            border-color: #a94442;
+        }
+    </style>
+
+
+</head>
+
+<!--container class acts as a wrapper for all the contents within it and forces it's contents to adapt to it -->
+
+<body class="container">
+    <header>
+        <h1>CoffeeRun</h1>
+    </header>
+
+    <!-- <section> logically groups the "markups"-->
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form data-coffee-order="form">
+                    <div class="form-group">
+
+                        <!--<label> is used so that when you click on the name of the label, it activates the link form-->
+                        <label for="coffeeOrder">Coffee Order</label>
+
+                        <!-- form-control manages layout and typography styling for your form elements
+                             <input> class is usually defaulted as single-line text field
+                                  'name' attribute is the key, what it contains is the value
+                                  'autofocus' is a keyword used so that the text field is ready to start inputting data
+                                      it is also a boolean value containing true or false, if the autofocus is not there, then
+                                      the value is false
+
+                             'required' makes sure that there is info in the text field
+                        -->
+                        <input class="form-control" name="coffee" id="coffeeOrder" autofocus required pattern="[a-zA-Z\s]+" />
+                    </div>
+                    <div class="form-group">
+                        <label for="emailInput">Email</label>
+
+                        <!--The value="" ensures that everytime you load the page, there is no value in the text field
+                            "placeholder" is used to give the user an idea of what to input in
+                        -->
+                        <input class="form-control" type="email" name="emailAddress" id="emailInput" value="" placeholder="dr@who.com" required/>
+                    </div>
+
+                    <!-- For radio buttons, we do not need "for" to label them. We do this because it automatically links
+                              and because we're conforming to BootStrap's ways
+                         Setting the 'name' values of the buttoms equal to the same thing ensures that only one value can be selected
+                         'checked' on tall automatically makes the tall checked when the page loads (same as autofocus)
+
+                       -->
+                    <div class="radio">
+                        <label>
+                        <input type="radio" name="size" value="short">
+                        Short
+                        </label>
+                    </div>
+
+                    <div class="radio">
+                        <label>
+                        <input type="radio" name="size" value="tall" checked>
+                        Tall
+                      </label>
+                    </div>
+
+                    <div class="radio">
+                        <label>
+                        <input type="radio" name="size" value="grande">
+                        Grande
+                      </label>
+                    </div>
+
+                    <!-- Used for Bronze Challenge-->
+                    <div class="radio">
+                        <label>
+                        <input type="radio" name="size" value="coffee-zilla">
+                        Coffee-Zilla
+                      </label>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="flavorShot">Flavor Shot</label>
+                        <select id="flavorShot" class="form-control" name="flavor">
+
+                          <!--First open is always selected -->
+                          <option value="">None</option>
+                          <option value="caramel">Caramel</option>
+                          <option value="almond">Almond</option>
+                          <option value="mocha">Mocha</option>
+                        </select>
+                    </div>
+
+                    <!-- Gold Challenge Assignment 6
+                    <div class="goldachieve">
+                        <div class="form-group">
+                            <label for="achievement">Achievement!</label>
+                            <select id="gold" class="form-control" name="gold">
+                              <option value="">None</option>
+                              <option value="power">Super Powers</option>
+                              <option value="time">Time Control</option>
+                              <option value="bug">Bug Free Code</option>
+                            </select>
+                        </div>
+                    </div> -->
+
+
+
+                    <div class="form-group">
+                        <label for="strengthLevel">Caffeine Rating:</label>
+
+                        <!--Used to display value from slider for Silver Challenge -->
+                        <input name="displayme" id="displayme" readonly style="border:0; font-weight:bold;">
+
+                        <!-- type "range" creates a range slider for people to use-->
+                        <input name="strength" id="strengthLevel" type="range" value="30">
+
+                    </div>
+
+                    <!-- Gold Challenge Assignment 6
+                    The Modal,
+                    <div id="myModal" class="modal"> -->
+
+                    <!-- Modal content -->
+                    <!--  <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <input id="modalMsg" readonly style="border:0; font-weight:bold; padding: auto;">
+
+
+                            <button type="yes" id="yesdisplay" class="btn btn-default">Yes</button>
+                            <button type="no" class="btn btn-default">No</button>
+                        </div>
+
+                    </div> -->
+
+
+                    <!-- btn btn-default class provides the GUI for the buttons through bootstrap
+                         go to getbootstrap.com/css for more details on what BootStrap offers-->
+                    <button type="submit" id="modalBtn" class="btn btn-default">Submit</button>
+                    <button type="reset" class="btn btn-default">Reset</button>
+
+
+                </form>
+            </div>
+
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>Pending Orders:</h4>
+                <div data-coffee-order="checklist">
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+    <script src="scripts/validation.js" charset="utf-8"></script>
+    <script src="scripts/checklist.js" charset="utf-8"></script>
+    <script src="scripts/formhandler.js" charset="utf-8"></script>
+    <script src="scripts/remotedatastore.js" charset="utf-8"></script>
+    <script src="scripts/datastore.js" charset="utf-8"></script>
+    <script src="scripts/truck.js" charset="utf-8"></script>
+    <script src="scripts/main.js" charset="utf-8"></script>
+
+
+</body>
+
+</html>
